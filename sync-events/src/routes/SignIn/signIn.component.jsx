@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './signIn.styles.css'
+import axios from 'axios'
 
 function SignIn() {
 
@@ -8,17 +9,46 @@ function SignIn() {
         password: "",
     }) 
 
+    const [user, setUser] = useState({
+        isSignedIn: false,
+        token: '',
+        userType: '',
+        id: ''
+    });
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+        setUser(JSON.parse(storedUser));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('user', JSON.stringify(user));
+    }, [user]);
+
     const handleChange = (event) => {
         setFormData({
             ...formData,
             [event.target.name]: event.target.value,
         })
-        console.dir(event.target)
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        console.log(formData)
+        try{
+            const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/login`, formData)
+            setUser({
+                isSignedIn:true,
+                token: response.data.data.token,
+                userType: response.data.data.userType,
+                id: response.data.data.id
+            })
+        }
+        catch(error) {
+            console.log(error)
+        }
+        // console.log(formData)
     }
 
     return(

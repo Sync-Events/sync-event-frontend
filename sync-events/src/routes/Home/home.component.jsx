@@ -6,15 +6,19 @@ function Home() {
     const [eventDetail, setEventDetail] = useState([])
 
     const getEvents = async () => {
-        const events = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/event/allEvents`);
-
-        console.log(events.data.data);
-        setEventDetail(events.data.data)
+        try{
+            const events = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/event/allEvents`);
+            setEventDetail(events.data.data)
+        }
+        catch(error) {
+            console.log(error)
+        }
     }
     
     useEffect(()=>{
         getEvents()
     },[])
+
     return (
         eventDetail.length > 0 ? eventDetail.map((detail) => {
             return(
