@@ -12,6 +12,7 @@ function StudentForm() {
 
     const [formData, setFormData] = useState({
         "email": "",
+        "image":"",
         "password": "",
         "fullName": "",
         "collegeName": "",
@@ -35,10 +36,6 @@ function StudentForm() {
 
         try {
             const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/register`, formData);
-            console.log(response);
-
-            console.log("ghkhjbkhghjb");
-
             toast.success("User registered succefully. Please login now", {
                 position: "bottom-right",
                 autoClose: 5000,
@@ -76,6 +73,10 @@ function StudentForm() {
                 <div className="fieldnew">
                     <input type="text" name="fullName" onChange={handleChange} required />
                     <label>Name</label>
+                </div>
+                <div className="fieldnew">
+                    <input type="text" name="image" onChange={handleChange} required />
+                    <label>Image Link</label>
                 </div>
                 <div className="fieldnew">
                     <input type="text" name="collegeName" onChange={handleChange} required />
