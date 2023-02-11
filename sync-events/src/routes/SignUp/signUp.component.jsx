@@ -1,56 +1,47 @@
 import './signUp.styles.css'
+import { useState } from 'react';
+import SocietyForm from './societyForm.component';
+import StudentForm from './studentForm.component';
 
 function SignUp() {
+    
+    const [selectedValue, setSelectedValue] = useState('student');
+
+    const handleRadioChange = (event) => {
+      setSelectedValue(event.target.value);
+    //   console.log(event.target.value)
+    };
+
     return(
-        <>
         <div className="wrapperme">
-        <div className="title">
-        Signup Form
-        <div className="btn-group btn-group-toggle ustubutton" data-toggle="buttons">
-            <label className="btn btn-secondary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked/> as a student
-            </label>
-            <label className="btn btn-secondary">
-            <input type="radio" name="options" id="option2" autocomplete="off"/>as a Society
-            </label>
-        
-        </div>
-        </div>
-        <div className="checkuser">
-            
-        </div>
-        <form action="/">
-
-
-            <div className="fieldnew">
-                <input type="text" required/>
-                <label>Name</label>
+            <div className="title">
+                Signup Form
+                <div className="btn-group btn-group-toggle ustubutton" data-toggle="buttons">
+                    <label className="btn btn-secondary active" htmlFor="student">
+                        <input 
+                        type="radio" 
+                        name="options" 
+                        id="student" 
+                        value="student" 
+                        autoComplete="off" 
+                        checked={selectedValue==='student'}
+                        onChange={handleRadioChange} /> as a student
+                    </label>
+                    <label className="btn btn-secondary" htmlFor="society">
+                        <input 
+                        type="radio" 
+                        name="options" 
+                        id="society" 
+                        value="society" 
+                        autoComplete="off"
+                        checked={selectedValue==='society'}
+                        onChange={handleRadioChange}
+                        />as a Society
+                    </label>
+                </div>
             </div>
-            <div className="fieldnew">
-                <input type="text" required/>
-                <label>Email Address</label>
-            </div>
-        <div className="fieldnew">
-            <input type="text" required/>
-            <label>Phone Number</label>
+                {selectedValue === "student" ? <StudentForm/> : <SocietyForm/>}
         </div>
-        <div className="fieldnew">
-            <input type="password" required/>
-            <label>Password</label>
-        </div>
-
-        <div className="fieldnew">
-            <input type="submit" value="Signup"/>
-        </div>
-        <div className="signup-link">
-            Already a member? <a href="/">Login Now</a>
-        </div>
-        </form>
-        </div>
-
-
-
-        </>
     )
 }
 
