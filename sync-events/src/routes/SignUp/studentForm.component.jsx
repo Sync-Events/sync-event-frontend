@@ -19,18 +19,18 @@ function StudentForm() {
             ...formData,
             [event.target.name]: event.target.value,
         })
-        console.dir(event.target)
+        // console.dir(event.target)
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        axios.post('http://localhost:8000/api/v1/auth/register', formData)
-        .then(response => {
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/register`, formData)
             console.log(response)
-        })
-        .catch(error => {
+        }
+        catch(error) {
             console.log(error)
-        })
+        }
     }
 
     return(
