@@ -1,63 +1,63 @@
 import './eventCard.styles.css'
 import venueSvg from '../../assets/venue.svg'
 import dateSvg from '../../assets/date.svg'
-import timeSvg from '../../assets/time.svg'
-import { useEffect, useState } from 'react'
+// import timeSvg from '../../assets/time.svg'
 
-const eventDetails = {
-    eventBanner: 'https://picsum.photos/200',
-    eventName: 'Tech Talks',
-    societyName: 'TCP',
-    description: 'It is series of seminars and workshops',
-    eventVenue: 'KMC, auditorium',
-    eventDate: '02/12/2023',
-    eventTime: '12PM',
-    website: 'link.com',
-    instagram: 'instagram.com',
-    linkedin: 'linkedin.com',
-    twitter: 'twitter.com'
-}
+// const eventDetail = {
+//     banner: 'https://picsum.photos/200',
+//     eventName: 'Tech Talks',
+//     societyName: 'TCP',
+//     eventDescription: 'It is series of seminars and workshops',
+//     eventVenue: 'KMC, auditorium',
+//     eventDate: '02/12/2023',
+//     eventTime: '12PM',
+//     website: 'link.com',
+//     instagram: 'instagram.com',
+//     linkedin: 'linkedin.com',
+//     twitter: 'twitter.com'
+// }
+// {banner, eventName, eventDescription, eventDates, contact, registrationDates, venue}
 
-function EventCard() {
+function EventCard({data}) {
 
-    const [eventDetail, setEventDetail] = useState({})
-    useEffect(() => {
-        setEventDetail(eventDetails)
-        // console.log(eventDetail)
-    }, [eventDetail])
-
+    // const [eventDetail, setEventDetail] = useState({})
+    // useEffect(() => {
+    //     const eventDetails = getEvents()
+    //     setEventDetail(eventDetails)
+    //     // console.log(eventDetail)
+    // }, [])
     return(
         <div className="card card-width">
-            <img src={eventDetail.eventBanner} className="card-img-top banner" alt="event-banner"/>
+            <img src={data.banner} className="card-img-top banner" alt="event-banner"/>
             <div className="card-body">
-                <h5 className="card-title">{eventDetail.eventName}</h5>
-                <p className="card-text">{eventDetail.description}</p>
+                <h5 className="card-title">{data.eventName}</h5>
+                <p className="card-text">{data.eventDescription}</p>
             </div>
             <div className="container d-flex flex-column">
-                <div className="">{eventDetail.societyName}</div>
+                <div className="">{}</div>
                 <div className="d-flex flex-row justify-content-evenly">
                     <div>
                         <img className='svg' src={venueSvg} alt="" />
-                        <p>{eventDetail.eventVenue}</p>
+                        <p>{data.venue}</p>
                     </div>
                     <div>
                         <img className='svg' src={dateSvg} alt="" />
-                        <p>{eventDetail.eventDate}</p>
+                        <p>{data.eventDates.start}</p>
                     </div>
-                    <div>
+                    {/* <div>
                         <img className='svg' src={timeSvg} alt="" />
-                        <p>{eventDetail.eventTime}</p>
-                    </div>
+                        <p>{}</p>
+                    </div> */}
                 </div>
             </div>
             <div className="card-body">
                 <button className="btn btn-outline-success" type="">Learn More</button>
             </div>
             <div className='d-flex justify-content-evenly'>
-                <a href={eventDetail.website}>website</a>
-                <a href={eventDetail.instagram}>instagram</a>
-                <a href={eventDetail.linkedin}>linkedin</a>
-                <a href={eventDetail.twitter}>twitter</a>
+                <a href={data.contact[0].website}>website</a>
+                <p>{data.contact[0].phoneNo}</p>
+                <p>{data.contact[0].email}</p>
+                {/* <a href={"/"}>twitter</a> */}
             </div>
         </div>
 )
