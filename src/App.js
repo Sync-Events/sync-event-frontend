@@ -7,6 +7,8 @@ import SignUp from './routes/SignUp/signUp.component';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ToastContainer } from 'react-toastify';
+import Profile from './routes/Profile/Profile.component';
+import PublishEvent from './routes/PublishEvent/PublishEvent.component';
 
 
 function App() {
@@ -24,14 +26,16 @@ function App() {
                 pauseOnHover
                 theme="light"
             />
-            <ToastContainer />
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<Home/>}/>
           <Route path='sign-in' element={<SignIn/>} />
           <Route path='sign-up' element={<SignUp/>} />
+          <Route path='profile' element={<Profile/>} />
+          <Route path='publish-event' element={<PublishEvent/>} />
         </Route>
       </Routes>
+            <ToastContainer />
     </div>
   );
 }

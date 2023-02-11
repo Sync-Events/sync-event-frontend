@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react'
 import './signIn.styles.css'
 import axios from 'axios'
 
+import { toast } from 'react-toastify';
+
+
 function SignIn() {
 
     const [formData, setFormData] = useState({
         email: "",
         password: "",
-    }) 
+    })
 
     const [user, setUser] = useState({
         token: '',
@@ -18,13 +21,14 @@ function SignIn() {
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
         if (storedUser) {
-        setUser(JSON.parse(storedUser));
+            setUser(JSON.parse(storedUser));
         }
         // localStorage.setItem('user', JSON.stringify(user));
     }, []);
 
 
     const handleChange = (event) => {
+
         setFormData({
             ...formData,
             [event.target.name]: event.target.value,
@@ -33,24 +37,40 @@ function SignIn() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        try{
+        try {
             const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/login`, formData);
             console.log("response");
             console.log(response.data.data);
+            toast.success("User logined in succefully", {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
 
-            setUser({
+            console.log({
                 token: response.data.data.token,
                 userType: response.data.data.userType,
                 id: response.data.data.id
-            })
+            });
+            localStorage.setItem('user', {
+                token: response.data.data.token,
+                userType: response.data.data.userType,
+                id: response.data.data.id
+            });
+            window.location.href="/"
         }
-        catch(error) {
+        catch (error) {
             console.log(error)
         }
         // console.log(formData)
     }
 
-    return(
+    return (
         <div className="conatiner-main">
             <div className="wrapperme">
                 <div className="titlenew">
@@ -58,11 +78,11 @@ function SignIn() {
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="field">
-                        <input type="text" name="email" onChange={handleChange} value={formData.email} id="email" required/>
+                        <input type="text" name="email" onChange={handleChange} value={formData.email} id="email" required />
                         <label htmlFor="email">Email Address</label>
                     </div>
                     <div className="field">
-                        <input type="password" name="password" onChange={handleChange} value={formData.password} id="password" required/>
+                        <input type="password" name="password" onChange={handleChange} value={formData.password} id="password" required />
                         <label htmlFor="password">Password</label>
                     </div>
                     <div className="contentnew">
@@ -71,7 +91,7 @@ function SignIn() {
                         </div>
                     </div>
                     <div className="field">
-                        <input type="submit" value="Login"/>
+                        <input type="submit" value="Login" />
                     </div>
                     <div className="signup-link">
                         Not a member? <a href="/">Signup now</a>

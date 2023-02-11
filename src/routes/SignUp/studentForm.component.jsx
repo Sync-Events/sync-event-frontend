@@ -2,7 +2,7 @@ import './signUp.styles.css'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 
@@ -29,36 +29,28 @@ function StudentForm() {
     }
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
+
+
+
         try {
             const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/register`, formData);
             console.log(response);
 
-            if (response.data.data.success) {
-                toast.success("User registered succefully. Please login now", {
-                    position: "bottom-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
-    
-                navigate("/sign-in");
-            } else {
-                toast.error(response.data.data.message, {
-                    position: "bottom-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
-            }
+            console.log("ghkhjbkhghjb");
+
+            toast.success("User registered succefully. Please login now", {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+
+            navigate("/sign-in");
 
         }
         catch (error) {
@@ -73,13 +65,13 @@ function StudentForm() {
                 draggable: true,
                 progress: undefined,
                 theme: "light",
-                });
+            });
         }
     }
 
     return (
         <>
-           
+
             <form onSubmit={handleSubmit}>
                 <div className="fieldnew">
                     <input type="text" name="fullName" onChange={handleChange} required />

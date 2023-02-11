@@ -18,13 +18,13 @@ function Navbar() {
           {user ?
             <>
               <div className="p-2">
-                <Link to='sign-up'>
+                <Link to='profile'>
                   <button className="btn btn-outline-success" type="">Profile</button>
                 </Link>
               </div>
               <div className="p-2">
-                <Link to='sign-up'>
-                  <button className="btn btn-outline-success" type="">Sign Out</button>
+                <Link to='publish-event'>
+                  <button className="btn btn-outline-success" type="">Publish Event</button>
                 </Link>
               </div>
             </>
