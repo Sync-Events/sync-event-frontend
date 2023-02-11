@@ -1,0 +1,8 @@
+.home-flex{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin-top: 40px;
+}

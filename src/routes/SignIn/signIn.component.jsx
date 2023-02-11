@@ -10,7 +10,6 @@ function SignIn() {
     }) 
 
     const [user, setUser] = useState({
-        isSignedIn: false,
         token: '',
         userType: '',
         id: ''
@@ -21,11 +20,9 @@ function SignIn() {
         if (storedUser) {
         setUser(JSON.parse(storedUser));
         }
+        // localStorage.setItem('user', JSON.stringify(user));
     }, []);
 
-    useEffect(() => {
-        localStorage.setItem('user', JSON.stringify(user));
-    }, [user]);
 
     const handleChange = (event) => {
         setFormData({
@@ -37,9 +34,11 @@ function SignIn() {
     const handleSubmit = async (event) => {
         event.preventDefault()
         try{
-            const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/login`, formData)
+            const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/login`, formData);
+            console.log("response");
+            console.log(response.data.data);
+
             setUser({
-                isSignedIn:true,
                 token: response.data.data.token,
                 userType: response.data.data.userType,
                 id: response.data.data.id

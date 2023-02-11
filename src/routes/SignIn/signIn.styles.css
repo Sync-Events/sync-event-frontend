@@ -17,6 +17,14 @@ html,body{
   background: #4158d0;
   color: #fff;
 }
+
+.conatiner-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 22px 0;
+}
+
 .wrapperme{
   width: 380px;
   background: #fff;

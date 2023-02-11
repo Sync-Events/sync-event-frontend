@@ -22,13 +22,20 @@ html,body{
     background-color: #fff;
 }
 
+.signup-entire{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0;
+}
+
 .wrapperme{
   width: 512px;
   background: #fff;
   border-radius: 15px;
   box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
 }
-.wrapperme .title {
+.wrapperme .title h1 {
     font-size: 31px;
     font-weight: 500;
     text-align: center;
@@ -37,6 +44,7 @@ html,body{
     user-select: none;
     border-radius: 15px 15px 0 0;
     background: linear-gradient(-135deg, #4419c3, #3a53d6);
+
 }
 .wrapperme form{
   padding: 10px 30px 50px 30px;
