@@ -19,11 +19,13 @@ const eventDetails = {
 }
 
 function EventCard() {
+
     const [eventDetail, setEventDetail] = useState({})
     useEffect(() => {
         setEventDetail(eventDetails)
-        console.log(eventDetail)
+        // console.log(eventDetail)
     }, [eventDetail])
+
     return(
         <div className="card card-width">
             <img src={eventDetail.eventBanner} className="card-img-top banner" alt="event-banner"/>
@@ -55,7 +57,7 @@ function EventCard() {
                 <a href={eventDetail.website}>website</a>
                 <a href={eventDetail.instagram}>instagram</a>
                 <a href={eventDetail.linkedin}>linkedin</a>
-                <a href={eventDetail.twitterx}>twitter</a>
+                <a href={eventDetail.twitter}>twitter</a>
             </div>
         </div>
 )
