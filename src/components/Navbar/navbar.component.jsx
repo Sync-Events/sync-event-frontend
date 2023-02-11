@@ -6,8 +6,8 @@ function Navbar() {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
-    setUser(user);
+    const user = localStorage.getItem('userData');
+    setUser(JSON.parse(user));
   }, [])
 
   return (
@@ -22,11 +22,19 @@ function Navbar() {
                   <button className="btn btn-outline-success" type="">Profile</button>
                 </Link>
               </div>
+              {user.userType === "Student"?
+              <div className="p-2">
+                <Link to='publish-event'>
+                  <button className="btn btn-outline-success" type="">Event Tickets</button>
+                </Link>
+              </div>
+              :
               <div className="p-2">
                 <Link to='publish-event'>
                   <button className="btn btn-outline-success" type="">Publish Event</button>
                 </Link>
               </div>
+              }
             </>
             :
             <>

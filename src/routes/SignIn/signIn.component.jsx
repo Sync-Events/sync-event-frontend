@@ -57,11 +57,11 @@ function SignIn() {
                 userType: response.data.data.userType,
                 id: response.data.data.id
             });
-            localStorage.setItem('user', {
+            localStorage.setItem('userData', JSON.stringify({
                 token: response.data.data.token,
                 userType: response.data.data.userType,
                 id: response.data.data.id
-            });
+            }));
             window.location.href="/"
         }
         catch (error) {
