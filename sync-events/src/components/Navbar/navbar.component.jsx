@@ -1,4 +1,5 @@
 import '../../logo.svg'
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
@@ -7,10 +8,14 @@ function Navbar() {
     <a className="navbar-brand" href='/'>Sync Events</a>
     <div className="d-flex">
       <div className="p-2">  
-        <button className="btn btn-outline-success" type="">Login</button>
+      <Link to='/sign-in'>
+        <button className="btn btn-outline-success" type="">Sign in</button>
+      </Link>
       </div>
       <div className="p-2">  
+      <Link to='sign-up'>
         <button className="btn btn-outline-success" type="">Sign Up</button>
+      </Link>
       </div>
     </div>
   </div>

@@ -1,14 +1,20 @@
 import './App.css';
-import Navbar from './components/Navbar/navbar.component'
-import EventCard from './components/EventCard/eventCard.component';
-import Footer from './components/Footer/footer.component';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './routes/Layout/layout.component'
+import Home from './routes/Home/home.component';
+import SignIn from './routes/SignIn/signIn.component';
+import SignUp from './routes/SignUp/signUp.component';
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <EventCard/>
-      <Footer/>
+      <Routes>
+        <Route path='/' element={<Layout/>}>
+          <Route index element={<Home/>}/>
+          <Route path='sign-in' element={<SignIn/>} />
+          <Route path='sign-up' element={<SignUp/>} />
+        </Route>
+      </Routes>
     </div>
   );
 }
