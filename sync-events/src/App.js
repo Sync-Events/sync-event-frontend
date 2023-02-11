@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar/navbar.component'
 
 function App() {
   return (
     <div className="App">
-      <p className="">Sync Events</p>
+      <Navbar/>
     </div>
   );
 }
