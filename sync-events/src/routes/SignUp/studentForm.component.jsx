@@ -1,34 +1,66 @@
 import './signUp.styles.css'
+import { useState } from 'react'
+import axios from 'axios'
 
 function StudentForm() {
+
+    const [formData, setFormData] = useState({
+            "email":"",
+            "password":"",
+            "fullName":"",
+            "collegeName":"",
+            "collegeYear":"",
+            "course":"",
+            "userType":"Student"
+    }) 
+
+    const handleChange = (event) => {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        })
+        console.dir(event.target)
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        axios.post('http://localhost:8000/api/v1/auth/register', formData)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     return(
-        <form action="/">
+        <form onSubmit={handleSubmit}>
             <div className="fieldnew">
-                <input type="text" required/>
+                <input type="text" name="fullName" onChange={handleChange} required/>
                 <label>Name</label>
             </div>
             <div className="fieldnew">
-                <input type="text" required/>
+                <input type="text" name="collegeName" onChange={handleChange} required/>
                 <label>College Name</label>
             </div>
             <div className="fieldnew">
-                <input type="number" required/>
+                <input type="number" name="collegeYear" onChange={handleChange} required/>
                 <label>College Year</label>
             </div>
             <div className="fieldnew">
-                <input type="text" required/>
+                <input type="text" name="email" onChange={handleChange} required/>
                 <label>Email Address</label>
             </div>
             <div className="fieldnew">
-                <input type="text" required/>
-                <label>Phone Number</label>
+                <input type="text" name="course" onChange={handleChange} required/>
+                <label>Course</label>
             </div>
-            <div className="fieldnew">
+            {/* <div className="fieldnew">
                 <input type="text" required/>
                 <label>Profile Photo Url</label>
-            </div>
+            </div> */}
             <div className="fieldnew">
-                <input type="password" required/>
+                <input type="password" name="password" onChange={handleChange} required/>
                 <label>Password</label>
             </div>
             <div className="fieldnew">
