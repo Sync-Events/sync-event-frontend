@@ -61,17 +61,10 @@ export default function Profile() {
 
 
     return (
-<<<<<<< HEAD
-        <div className=''>
-            <div className="profile-box">
-                {userDetails && <img src={userDetails.image} alt="" />}
-                <div className="profile-info">
-=======
         <div className='profile-container d-flex flex-column justify-content-center align-items-center mt-3'>
             <div className="profile-box mb-5">
                 {userDetails && <img className='image-fluid' src={userDetails.image} alt="" />}
                 <div className="profile-info mt-3">
->>>>>>> dc9a886508600697bbf1bcd5b7c8391a6b0e0656
                     <h4>Name: {userDetails?.fullName}</h4>
                     <div className='profile-details'>
                         {userDetails?.collegeYear && <h4 className='text-muted'>College Year: {userDetails.collegeYear}</h4>}
