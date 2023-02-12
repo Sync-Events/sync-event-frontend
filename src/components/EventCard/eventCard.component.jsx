@@ -3,19 +3,19 @@ import venueSvg from '../../assets/venue.svg'
 import dateSvg from '../../assets/date.svg'
 // import timeSvg from '../../assets/time.svg'
 
-// const eventDetail = {
-//     banner: 'https://picsum.photos/200',
-//     eventName: 'Tech Talks',
-//     societyName: 'TCP',
-//     eventDescription: 'It is series of seminars and workshops',
-//     eventVenue: 'KMC, auditorium',
-//     eventDate: '02/12/2023',
-//     eventTime: '12PM',
-//     website: 'link.com',
-//     instagram: 'instagram.com',
-//     linkedin: 'linkedin.com',
-//     twitter: 'twitter.com'
-// }
+    // const eventDetail = {
+    //     banner: 'https://picsum.photos/200',
+    //     eventName: 'Tech Talks',
+    //     societyName: 'TCP',
+    //     eventDescription: 'It is series of seminars and workshops',
+    //     eventVenue: 'KMC, auditorium',
+    //     eventDate: '02/12/2023',
+    //     eventTime: '12PM',
+    //     website: 'link.com',
+    //     instagram: 'instagram.com',
+    //     linkedin: 'linkedin.com',
+    //     twitter: 'twitter.com'
+    // }
 // {banner, eventName, eventDescription, eventDates, contact, registrationDates, venue}
 
 function EventCard({data}) {
