@@ -10,12 +10,9 @@ function PublishEvent() {
 
     const [formData, setFormData] = useState({
         eventName: "",
-        contact: {email: "", website: "", phoneNo: ""},
         venue: "",
         eventDescription: "",
-        eventDates: {start: "", end: ""},
         banner: "",
-        registrationDates: {start:"", end: ""}
     })
 
     const [user, setUser] = useState({
@@ -34,7 +31,6 @@ function PublishEvent() {
 
 
     const handleChange = (event) => {
-
         setFormData({
             ...formData,
             [event.target.name]: event.target.value,
@@ -42,12 +38,15 @@ function PublishEvent() {
     }
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
+
+        const userData = JSON.parse(localStorage.getItem("userData"));
+        const eventDates = {start: event.target.eventDatesStart.value, end: event.target.eventDatesEnd.value};
+        const registrationDates = {start:event.target.registrationDatesStart.value, end: event.target.registrationDatesEnd.value};
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/login`, formData);
-            console.log("response");
-            console.log(response.data.data);
-            toast.success("User logined in succefully", {
+            const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/event/publish`, {...formData,eventDates,registrationDates},{
+                headers: { Authorization: `Bearer ${userData.token}`}});
+            toast.success("Event Registraed Succefully", {
                 position: "bottom-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -58,16 +57,8 @@ function PublishEvent() {
                 theme: "light",
             });
 
-            console.log({
-                token: response.data.data.token,
-                userType: response.data.data.userType,
-                id: response.data.data.id
-            });
-            localStorage.setItem('user', {
-                token: response.data.data.token,
-                userType: response.data.data.userType,
-                id: response.data.data.id
-            });
+            console.log(response);
+
             window.location.href="/"
         }
         catch (error) {
@@ -100,31 +91,19 @@ function PublishEvent() {
                         <label htmlFor="eventDescription">Event Description</label>
                     </div>
                     <div className="field">
-                        <input type="text" name="contact.email" onChange={handleChange} value={formData.contact.email} id="contact.email" required />
-                        <label htmlFor="contact.email">Email</label>
-                    </div>
-                    <div className="field">
-                        <input type="text" name="contact.website" onChange={handleChange} value={formData.website} id="contact.website" required />
-                        <label htmlFor="contact.website">Website</label>
-                    </div>
-                    <div className="field">
-                        <input type="text" name="contact.phoneNo" onChange={handleChange} value={formData.phoneNo} id="contact.phoneNo" required />
-                        <label htmlFor="contact.phoneNo">Phone Number</label>
-                    </div>
-                    <div className="field">
-                        <input type="date" name="eventDates.start" onChange={handleChange} value={formData.eventDates.start} id="eventDates.start" required />
+                        <input type="text" name="eventDatesStart"  required />
                         <label htmlFor="eventDates.start">Start Date</label>
                     </div>
                     <div className="field">
-                        <input type="date" name="eventDates.end" onChange={handleChange} value={formData.eventDates.end} id="eventDates.end" required />
+                        <input type="text" name="eventDatesEnd" required />
                         <label htmlFor="eventDates.end">End Date</label>
                     </div>
                     <div className="field">
-                        <input type="date" name="registrationDates.start" onChange={handleChange} value={formData.registrationDates.start} id="registrationDates.start" required />
-                        <label htmlFor="registrationDates.start">Registration Date</label>
+                        <input type="text" name="registrationDatesStart"  required />
+                        <label htmlFor="registrationDatesStart">Registration Start</label>
                     </div>
                     <div className="field">
-                        <input type="date" name="registrationDates.end" onChange={handleChange} value={formData.registrationDates.end} id="registrationDates.end" required />
+                        <input type="text" name="registrationDatesEnd" required />
                         <label htmlFor="registrationDates.end">Registration End</label>
                     </div>
 
