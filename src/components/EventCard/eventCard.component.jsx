@@ -2,6 +2,7 @@ import './eventCard.styles.css'
 import venueSvg from '../../assets/venue.svg'
 import dateSvg from '../../assets/date.svg'
 // import timeSvg from '../../assets/time.svg'
+import { Link } from 'react-router-dom';
 
     // const eventDetail = {
     //     banner: 'https://picsum.photos/200',
@@ -18,7 +19,7 @@ import dateSvg from '../../assets/date.svg'
     // }
 // {banner, eventName, eventDescription, eventDates, contact, registrationDates, venue}
 
-function EventCard({data}) {
+function EventCard({ data }) {
 
     // const [eventDetail, setEventDetail] = useState({})
     // useEffect(() => {
@@ -26,15 +27,15 @@ function EventCard({data}) {
     //     setEventDetail(eventDetails)
     //     // console.log(eventDetail)
     // }, [])
-    return(
+    return (
         <div className="card card-width">
-            <img src={data.banner} className="card-img-top banner" alt="event-banner"/>
+            <img src={data.banner} className="card-img-top banner" alt="event-banner" />
             <div className="card-body">
                 <h5 className="card-title">{data.eventName}</h5>
                 <p className="card-text">{data.eventDescription}</p>
             </div>
             <div className="container d-flex flex-column">
-                <div className="">{}</div>
+                <div className="">{ }</div>
                 <div className="d-flex flex-row justify-content-evenly">
                     <div>
                         <img className='svg' src={venueSvg} alt="" />
@@ -51,7 +52,9 @@ function EventCard({data}) {
                 </div>
             </div>
             <div className="card-body">
-                <button className="btn btn-outline-success" type="">Learn More</button>
+                <Link to={`/eventDetail/${data._id}`}>
+                    <button className="btn btn-outline-success" type="">Learn More</button>
+                </Link>
             </div>
             <div className='d-flex justify-content-evenly'>
                 <a href={data.contact[0].website}>website</a>
@@ -60,7 +63,7 @@ function EventCard({data}) {
                 {/* <a href={"/"}>twitter</a> */}
             </div>
         </div>
-)
+    )
 }
 
 export default EventCard

@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Profile from './routes/Profile/Profile.component';
 import PublishEvent from './routes/PublishEvent/PublishEvent.component';
+import EventDetail from './routes/EventDetail/EventDetail.component';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path='sign-up' element={<SignUp/>} />
           <Route path='profile' element={<Profile/>} />
           <Route path='publish-event' element={<PublishEvent/>} />
+          <Route path='eventDetail/:eventId' element={<EventDetail/>} />
         </Route>
       </Routes>
             <ToastContainer />
