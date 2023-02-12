@@ -31,9 +31,6 @@ function StudentForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-
-
         try {
             const response = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/auth/register`, formData);
             toast.success("User registered succefully. Please login now", {
