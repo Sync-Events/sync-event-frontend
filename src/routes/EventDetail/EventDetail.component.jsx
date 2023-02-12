@@ -44,15 +44,17 @@ export default function EventDetail() {
 
     return (
         (eventDetail &&
-            <div>
+            <div className='mt-3'>
                 <h1>{eventDetail.eventName}</h1>
-                <img src={eventDetail.banner} alt="" />
+                <img src={eventDetail.banner} alt="" style={{width: '20rem'}}/>
 
-                <h2>Registration Start from {eventDetail.registrationDates.star} till {eventDetail.registrationDates.end}</h2>
+                <div className='mt-3'>
+                    <h2 className='event-time'>Registration Start from {eventDetail.registrationDates.start} till {eventDetail.registrationDates.end}</h2>
 
-                <h2>Event Start from {eventDetail.registrationDates.start} till {eventDetail.registrationDates.end}</h2>
+                    <h2 className='event-time'>Event Start from {eventDetail.registrationDates.start} till {eventDetail.registrationDates.end}</h2>
+                </div>
 
-                <p>{eventDetail.eventDescription}</p>
+                <p className='text-muted'>{eventDetail.eventDescription}</p>
 
 
                 {userData &&
