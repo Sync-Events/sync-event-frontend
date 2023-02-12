@@ -56,12 +56,12 @@ function EventCard({ data }) {
                     <button className="btn btn-outline-success" type="">Learn More</button>
                 </Link>
             </div>
-            <div className='d-flex justify-content-evenly'>
+            {/* <div className='d-flex justify-content-evenly'>
                 <a href={data.contact[0].website}>website</a>
                 <p>{data.contact[0].phoneNo}</p>
                 <p>{data.contact[0].email}</p>
-                {/* <a href={"/"}>twitter</a> */}
-            </div>
+                <a href={"/"}>twitter</a>
+            </div> */}
         </div>
     )
 }
