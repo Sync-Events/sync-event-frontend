@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# About SyncEvents
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SyncEvents is a platform that helps students to know what's happening in the campus and help societies to register students in a more transparent, secure and efficient way using NFTs as tickets. Since NFTs are non fungible, it is unique and can be verified at the time of entrance. This can also help the socities to boost their reach among the students.
+This platform provides a one stop place for students to discover events and help socities register them more securely and transpararently. <br>
+**Project Website:**
+[SyncEvents](https://sync-events.netlify.app/)
+
+## About this repository
+This repository contains the frontend code for the SyncEvents. It is built with react library. We have used the bootstrap framework for faster styling and prototying. 
+
+## Clone repository
+You can fork this repository and clone it into your local system using the git command: `git clone https://github.com/Sync-Events/sync-event-frontend.git`
 
 ## Available Scripts
 
@@ -29,6 +38,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+**Currently the frontend is hosted at Netlify**
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
@@ -39,32 +50,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
