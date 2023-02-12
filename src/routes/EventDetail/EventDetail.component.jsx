@@ -38,7 +38,19 @@ export default function EventDetail() {
 
 
     const registerInEvent = async () => {
-        const areYou = window.confirm("are you sure you want to register?");        ;
+        try {
+            const _user = JSON.parse(localStorage.getItem("userData"));
+
+            const registerIn = await axios.post(`${process.env.REACT_APP_BASE_API_URL}/event/registerIn/${eventId}`, {
+                headers: { Authorization: `Bearer ${_user.token}` }});
+            window.location.reload();
+
+        } catch (error) {
+            console.log('====================================');
+            console.log(error);
+            console.log('====================================');
+        }
+
 
     }
 
